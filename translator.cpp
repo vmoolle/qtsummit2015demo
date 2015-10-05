@@ -20,7 +20,6 @@ TranslateRequest::~TranslateRequest()
 
 QVariant TranslateRequest::value() const
 {
-//    return m_text;
     return tr(m_text.toUtf8().constData());
 }
 
@@ -30,7 +29,8 @@ void TranslateRequest::onLanguageChange()
     emit valueChanged();
 }
 
-Translator::Translator()
+Translator::Translator(QObject *parent)
+    : AbstractActiveRequestTarget(parent)
 {
     qApp->installEventFilter(this);
 }
@@ -39,14 +39,9 @@ Translator::~Translator()
 {
 }
 
-void Translator::emulateLanguageChange()
-{
-    qDebug() << "Translator::emulateLanguageChange()";
-    qApp->installTranslator(new QuackTranslator(this));
-}
-
 QObject *Translator::translate(const QString &text)
 {
+    qDebug() << "Translator::translate(): " << text;
     return new TranslateRequest(this, text);
 }
 

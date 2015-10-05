@@ -3,6 +3,7 @@
 #include <QDebug>
 
 QuackTranslator::QuackTranslator(QObject *parent)
+    : QTranslator(parent)
 {
     qDebug() << "QuackTranslator::QuackTranslator()";
 }

@@ -6,3 +6,10 @@
 //{
 //    QQmlEngine::setObjectOwnership(request, QQmlEngine::JavaScriptOwnership);
 //}
+
+
+AbstractActiveRequestTarget::AbstractActiveRequestTarget(QObject *parent)
+    : QObject(parent)
+{
+
+}

@@ -29,10 +29,9 @@ signals:
     void languageChange();
 
 public:
-    Translator();
+    Translator(QObject *parent=0);
     ~Translator();
 
-    Q_INVOKABLE void emulateLanguageChange();
     Q_INVOKABLE QObject* translate(const QString& text);
 
 protected:

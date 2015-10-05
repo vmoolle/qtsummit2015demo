@@ -2,5 +2,6 @@ import QtQuick 2.0
 
 Text {
     property string trText
-    text: tr(trText)
+    property QtObject textRequest: translator.translate(trText)
+    text: textRequest.value
 }

@@ -18,6 +18,7 @@ class AbstractActiveRequestTarget: public QObject
 {
     Q_OBJECT
 public:
+    AbstractActiveRequestTarget(QObject* parent=0);
 //protected:
 //    AbstractActiveRequest* cppOwned(AbstractActiveRequest* request) const;
 };
