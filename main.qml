@@ -1,8 +1,9 @@
 import QtQuick 2.4
+import Cute.Quack 1.0 as CC
 
 Item {
     function tr(text) {
-        return translator.translate(text).value
+        return CC.quackTranslator.translate(text).value
     }
 
 //    Text {
@@ -22,7 +23,13 @@ Item {
     MouseArea {
         anchors.fill: parent
         onClicked: {
-            translator.emulateLanguageChange()
+            CC.quackTranslator.emulateLanguageChange()
         }
+    }
+
+    Component.onCompleted: {
+//        console.log("CC: " + CC)
+        console.log("CC.quackTranslator: " + CC.quackTranslator)
+//        console.log("CC.quackTranslator.quackTranslator: " + CC.quackTranslator.quackTranslator)
     }
 }
