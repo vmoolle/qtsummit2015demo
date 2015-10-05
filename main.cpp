@@ -7,19 +7,19 @@
 #include <QJSEngine>
 #include <QGuiApplication>
 
-static QJSValue quackTranslatorSingletontypeProvider(QQmlEngine *engine, QJSEngine *scriptEngine)
+static QObject* quackTranslatorSingletontypeProvider(QQmlEngine* engine, QJSEngine* scriptEngine)
 {
     Q_UNUSED(engine)
+    Q_UNUSED(scriptEngine)
 
-    static Translator *quackTranslator = new Translator;
-    return scriptEngine->newQObject(quackTranslator);
+    return new Translator;
 }
 
 int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
 
-    qmlRegisterSingletonType("Cute.Quack", 1, 0, "quackTranslator", &quackTranslatorSingletontypeProvider);
+    qmlRegisterSingletonType<Translator>("Cute.Quack", 1, 0, "QuackTranslator", &quackTranslatorSingletontypeProvider);
 
     QQuickView view;
     view.setSource(QUrl("qrc:/main.qml"));
