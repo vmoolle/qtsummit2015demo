@@ -2,5 +2,6 @@
     <qresource prefix="/">
         <file>main.qml</file>
         <file>TrText.qml</file>
+        <file>TrButton.qml</file>
     </qresource>
 </RCC>

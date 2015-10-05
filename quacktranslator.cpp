@@ -28,6 +28,7 @@ QString QuackTranslator::translate(const char *context, const char *sourceText, 
         return QString(sourceText);
 
     int wordLength = 0;
+    bool wordStartsWithUpperCase = false;
 
     for (int i = 0; i <= src.length(); i++) {
         QChar ch;
@@ -36,15 +37,22 @@ QString QuackTranslator::translate(const char *context, const char *sourceText, 
         if (atEnd || !(ch = src.at(i)).isLetter()) {
             if (wordLength > 0) {
                 QString quack("quack");
-                int quacks = 1 + wordLength / quack.length();
+                int quacks = qMax(wordLength/quack.length(), 1);
                 wordLength = 0;
 
-                res += quack.repeated(quacks);
+                QString word = quack.repeated(quacks);
+                if (wordStartsWithUpperCase)
+                    word[0] = word[0].toUpper();
+
+                res += word;
             }
 
             if (!atEnd)
                 res += ch;
         } else {
+            if (wordLength == 0)
+                wordStartsWithUpperCase = ch.isUpper();
+
             wordLength++;
         }
     }
