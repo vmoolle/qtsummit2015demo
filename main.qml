@@ -8,6 +8,7 @@ Item {
         anchors.right: parent.right
         anchors.top: parent.top
         anchors.margins: 25
+        horizontalAlignment: Text.AlignJustify
         wrapMode: Text.Wrap
         font.pointSize: 16
         trText: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, "
