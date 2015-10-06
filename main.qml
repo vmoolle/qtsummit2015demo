@@ -23,7 +23,7 @@ Item {
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.bottom: parent.bottom
         anchors.margins: loremIpsum.anchors.margins
-        property string trText: QT_TR_NOOP("Toggle quack")
+        trText: QT_TR_NOOP("Toggle quack")
         onClicked: Quack.on = !Quack.on
     }
 }

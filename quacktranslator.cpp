@@ -15,14 +15,12 @@ QuackTranslator::~QuackTranslator()
 
 QString QuackTranslator::translate(const char *context, const char *sourceText, const char *disambiguation, int n) const
 {
-//    return QString("Quack: ") + sourceText;
-//    QStringList words = src.split(" ");
+    Q_UNUSED(disambiguation)
+    Q_UNUSED(n)
 
     QString src(sourceText);
     QString res;
     res.reserve(src.length());
-
-//    qDebug() << "context: " << context << "src: " << src << " src.length(): " << src.length();
 
     if (QString(context) != "TranslateRequest")
         return QString(sourceText);
@@ -57,7 +55,6 @@ QString QuackTranslator::translate(const char *context, const char *sourceText, 
         }
     }
 
-    qDebug() << "res: " << res;
     return res;
 }
 

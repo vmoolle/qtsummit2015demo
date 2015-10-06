@@ -1,11 +1,8 @@
-#include "translator.h"
 #include "quack.h"
+#include "translator.h"
 
 #include <QQuickView>
-#include <QQmlContext>
 #include <QtQml>
-#include <QJSValue>
-#include <QJSEngine>
 #include <QGuiApplication>
 
 static QObject* quackSingletontypeProvider(QQmlEngine* engine, QJSEngine* scriptEngine)

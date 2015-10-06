@@ -3,12 +3,11 @@
 
 #include "activerequest.h"
 
-class TranslateRequest: public AbstractActiveRequest
+class TranslateRequest: public ActiveRequest
 {
     Q_OBJECT
 public:
     ~TranslateRequest();
-
     QVariant value() const;
 
 private slots:
@@ -22,7 +21,7 @@ private:
     QString m_text;
 };
 
-class Translator: public AbstractActiveRequestTarget
+class Translator: public QObject
 {
     Q_OBJECT
 signals:
@@ -36,9 +35,6 @@ public:
 
 protected:
     bool eventFilter(QObject *obj, QEvent *event);
-
-private slots:
-
 };
 
 #endif // TRANSLATOR

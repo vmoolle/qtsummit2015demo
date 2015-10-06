@@ -30,13 +30,15 @@ void TranslateRequest::onLanguageChange()
 }
 
 Translator::Translator(QObject *parent)
-    : AbstractActiveRequestTarget(parent)
+    : QObject(parent)
 {
+    qDebug() << "Translator::Translator()";
     qApp->installEventFilter(this);
 }
 
 Translator::~Translator()
 {
+    qDebug() << "Translator::~Translator()";
 }
 
 QObject *Translator::translate(const QString &text)
@@ -47,7 +49,6 @@ QObject *Translator::translate(const QString &text)
 
 bool Translator::eventFilter(QObject *obj, QEvent *event)
 {
-//    qDebug() << "Translator::eventFilter()" << event->type();
     if (event->type() == QEvent::LanguageChange) {
         qDebug() << "Translator::eventFilter(): LanguageChange";
         emit languageChange();
